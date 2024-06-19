@@ -44,6 +44,10 @@ interface Props {
 }
 
 const MyBookingClient = ({ booking }: Props) => {
+  const { userId } = useAuth();
+  const { toast } = useToast();
+  const router = useRouter();
+
   const { setRoomData, paymentIntent, setClientSecret, setPaymentIntent } =
     useBookRoom();
   const [bookingIsLoading, setBookingIsLoadingLoading] = useState(false);
@@ -54,13 +58,10 @@ const MyBookingClient = ({ booking }: Props) => {
 
   const country = getCountryByCode(Hotel.country);
   const state = getStateByCode(Hotel.country, Hotel.state);
-  const { userId } = useAuth();
-  const router = useRouter();
 
   const startDate = moment(booking.startDate).format("MMMM Do YYYY");
   const endDate = moment(booking.endDate).format("MMMM Do YYYY");
   const dayCount = differenceInCalendarDays(booking.endDate, booking.startDate);
-  const { toast } = useToast();
 
   const handleBookRoom = () => {
     if (!userId)
