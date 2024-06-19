@@ -10,7 +10,7 @@ import {
 } from "./ui/select";
 import { useEffect, useState } from "react";
 import { ICity, IState } from "country-state-city";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
 import { Button } from "./ui/button";
 
@@ -22,9 +22,12 @@ const LocationFilter = () => {
   const [cities, setCities] = useState<ICity[]>([]);
   const router = useRouter();
   const params = useSearchParams();
+  const pathname = usePathname();
 
   const { getAllCountries, getCountryStates, getStateCities } = useLocation();
   const countries = getAllCountries();
+
+  if (pathname !== "/") return null;
 
   useEffect(() => {
     const countryStates = getCountryStates(country);
