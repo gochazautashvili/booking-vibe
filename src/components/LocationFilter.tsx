@@ -27,8 +27,6 @@ const LocationFilter = () => {
   const { getAllCountries, getCountryStates, getStateCities } = useLocation();
   const countries = getAllCountries();
 
-  if (pathname !== "/") return null;
-
   useEffect(() => {
     const countryStates = getCountryStates(country);
     console.log(countryStates);
@@ -103,6 +101,8 @@ const LocationFilter = () => {
     setState("");
     setCity("");
   };
+
+  if (pathname !== "/") return null;
 
   return (
     <Container>
