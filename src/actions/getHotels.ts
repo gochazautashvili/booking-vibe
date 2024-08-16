@@ -12,7 +12,7 @@ export const getHotels = async (searchParams: {
 
     const hotels = await db.hotel.findMany({
       where: {
-        title: { contains: title },
+        title: { search: title },
         country,
         state,
         city,

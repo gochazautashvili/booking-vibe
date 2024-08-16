@@ -7,7 +7,11 @@ const MyBookings = async () => {
   const bookingsHaveMade = await getBookingByUserId();
 
   if (!bookingsFromVisitors && !bookingsHaveMade)
-    return <div>No bookings found</div>;
+    return (
+      <div className="text-center my-10 text-destructive">
+        No bookings found
+      </div>
+    );
 
   return (
     <div className="flex flex-col gap-10">

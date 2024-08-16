@@ -1,7 +1,8 @@
-import { getHotels } from "@/actions/getHotels";
 import HotelList from "@/components/HotelList";
+import { Loader2 } from "lucide-react";
+import { Suspense } from "react";
 
-interface HomeProps {
+export interface HomeProps {
   searchParams: {
     title: string;
     country: string;
@@ -10,15 +11,19 @@ interface HomeProps {
   };
 }
 
-const HomePage = async ({ searchParams }: HomeProps) => {
-  const hotels = await getHotels(searchParams);
-
-  if (!hotels) return <div>No hotels found....</div>;
-
+const HomePage = ({ searchParams }: HomeProps) => {
   return (
-    <div>
-      <HotelList hotels={hotels} />
-    </div>
+    <Suspense
+      key={
+        searchParams.title ||
+        searchParams.city ||
+        searchParams.state ||
+        searchParams.country
+      }
+      fallback={<Loader2 className="animate-spin mx-auto my-10" />}
+    >
+      <HotelList searchParams={searchParams} />
+    </Suspense>
   );
 };
 

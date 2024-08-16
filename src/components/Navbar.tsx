@@ -21,10 +21,10 @@ const Navbar = () => {
             className="flex items-center gap-1 cursor-pointer"
           >
             <Image src="/icon.png" alt="logo" width={30} height={30} />
-            <div className="font-bold text-xl">Travel Vibe</div>
+            <div className="font-bold text-xl md:block hidden">Travel Vibe</div>
           </div>
           <SearchInput />
-          <div className="flex gap-3 items-center">
+          <div className="flex md:gap-3 items-center">
             <ModeToggle />
             <NavMenu />
             <UserButton afterSignOutUrl="/" />
@@ -34,6 +34,7 @@ const Navbar = () => {
                   onClick={() => router.push("/sign-in")}
                   variant="outline"
                   size="sm"
+                  className="mr-2"
                 >
                   Sign in
                 </Button>

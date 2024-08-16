@@ -24,7 +24,7 @@ import { Button } from "./ui/button";
 import { Eye, Loader2, PencilLine, Plus, Trash, XCircle } from "lucide-react";
 import axios from "axios";
 import useLocation from "@/hooks/useLoaction";
-import { City, ICity, IState } from "country-state-city";
+import { ICity, IState } from "country-state-city";
 import {
   Select,
   SelectContent,
@@ -478,7 +478,11 @@ const AddHotelForm = ({ hotel }: AddHotelFormProps) => {
                             size="icon"
                             variant="ghost"
                           >
-                            {imagesIsDeleting ? <Loader2 /> : <XCircle />}
+                            {imagesIsDeleting ? (
+                              <Loader2 className="animate-spin" />
+                            ) : (
+                              <XCircle />
+                            )}
                           </Button>
                         </div>
                       ) : (
@@ -660,7 +664,8 @@ const AddHotelForm = ({ hotel }: AddHotelFormProps) => {
                   >
                     {isHotelDeleting ? (
                       <>
-                        <Loader2 className="mr-2 h-4 w-4" /> Deleting...
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />{" "}
+                        Deleting...
                       </>
                     ) : (
                       <>
@@ -717,7 +722,8 @@ const AddHotelForm = ({ hotel }: AddHotelFormProps) => {
                   >
                     {isLoading ? (
                       <>
-                        <Loader2 className="mr-2 h-4 w-4" /> Updating...
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />{" "}
+                        Updating...
                       </>
                     ) : (
                       <>
@@ -733,7 +739,8 @@ const AddHotelForm = ({ hotel }: AddHotelFormProps) => {
                   >
                     {isLoading ? (
                       <>
-                        <Loader2 className="mr-2 h-4 w-4" /> Creating...
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />{" "}
+                        Creating...
                       </>
                     ) : (
                       <>

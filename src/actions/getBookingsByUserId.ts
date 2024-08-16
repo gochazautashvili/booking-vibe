@@ -2,12 +2,16 @@
 
 import db from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
+import { isRedirectError } from "next/dist/client/components/redirect";
+import { redirect } from "next/navigation";
 
 export const getBookingByUserId = async () => {
   try {
     const { userId } = auth();
 
-    if (!userId) throw new Error("Unauthorized");
+    if (!userId) {
+      redirect("/");
+    }
 
     const bookings = await db.booking.findMany({
       where: {
@@ -26,6 +30,7 @@ export const getBookingByUserId = async () => {
 
     return bookings;
   } catch (error: any) {
+    if (isRedirectError(error)) return;
     throw new Error(error);
   }
 };

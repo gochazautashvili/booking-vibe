@@ -361,7 +361,7 @@ const RoomCard = ({ hotel, room, bookings = [] }: RoomCardProps) => {
                   onClick={() => handleBookRoom()}
                 >
                   {bookingIsLoading ? (
-                    <Loader2 className="w-4 h-4 mr-2" />
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
                   ) : (
                     <Wand2 className="w-4 h-4 mr-2" />
                   )}
@@ -380,7 +380,7 @@ const RoomCard = ({ hotel, room, bookings = [] }: RoomCardProps) => {
               >
                 {isLoading ? (
                   <>
-                    <Loader2 className="w-4 h-4" /> Deleting...
+                    <Loader2 className="w-4 h-4 animate-spin" /> Deleting...
                   </>
                 ) : (
                   <>

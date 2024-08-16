@@ -36,7 +36,9 @@ const HotelCard = ({ hotel }: { hotel: HotelWithRooms }) => {
           />
         </div>
         <div className="flex-1 flex flex-col justify-between h-[210px] gap-1 px-1 py-2 text-sm">
-          <h3 className="font-semibold text-xl">{hotel.title}</h3>
+          <h3 className="font-semibold text-xl line-clamp-2 break-words">
+            {hotel.title}
+          </h3>
           <p className="text-primary/90">
             {hotel.description.substring(0, 45)}...
           </p>

@@ -372,7 +372,11 @@ const AddRoomForm = ({ hotel, room, handelDialogueOpen }: AddRoomFormProps) => {
                         size="icon"
                         variant="ghost"
                       >
-                        {imagesIsDeleting ? <Loader2 /> : <XCircle />}
+                        {imagesIsDeleting ? (
+                          <Loader2 className="animate-spin" />
+                        ) : (
+                          <XCircle />
+                        )}
                       </Button>
                     </div>
                   ) : (
@@ -527,7 +531,7 @@ const AddRoomForm = ({ hotel, room, handelDialogueOpen }: AddRoomFormProps) => {
               >
                 {isLoading ? (
                   <>
-                    <Loader2 className="mr-2 h-4 w-4" /> Updating...
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Updating...
                   </>
                 ) : (
                   <>
@@ -545,7 +549,7 @@ const AddRoomForm = ({ hotel, room, handelDialogueOpen }: AddRoomFormProps) => {
               >
                 {isLoading ? (
                   <>
-                    <Loader2 className="mr-2 h-4 w-4" /> Creating...
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Creating...
                   </>
                 ) : (
                   <>

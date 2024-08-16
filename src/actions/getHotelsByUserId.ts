@@ -1,13 +1,15 @@
 "use server";
 import db from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
+import { isRedirectError } from "next/dist/client/components/redirect";
+import { redirect } from "next/navigation";
 
 export const getHotelsByUserId = async () => {
   try {
     const { userId } = auth();
 
     if (!userId) {
-      throw new Error("Unauthorized");
+      redirect("/");
     }
 
     const hotel = await db.hotel.findMany({
@@ -21,6 +23,7 @@ export const getHotelsByUserId = async () => {
 
     return hotel;
   } catch (error: any) {
+    if (isRedirectError(error)) return;
     throw new Error(error);
   }
 };
